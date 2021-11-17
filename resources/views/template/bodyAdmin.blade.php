@@ -1,0 +1,25 @@
+@switch($section)
+    @case('addpost')
+        @include('template/addpost')
+        @break
+    @case('listpost')
+        @include('template/listpost')
+        @break
+    @case('seepost')
+        @include('template/seepost')
+        @break
+    @case('admin')
+        @include('template/admin')
+        @break
+    @case('listusers')
+        @include('template/listusers')
+        @break
+    @case('addusers')
+        @include('template/addusers')
+        @break
+    @case('seeusers')
+        @include('template/seeusers')
+        @break
+    @default
+        
+@endswitch
