@@ -51,7 +51,10 @@ Route::middleware([sessionVerifyAdminMiddleware::class])->group(function () {
     Route::get('/admin', [adminController::class, 'admin']);
 
     Route::get('/admin/addpost', [adminController::class, 'get'])->middleware(operationsMiddleware::class);
+    Route::get('/admin/addpostTransfers', [adminController::class, 'getTransfers'])->middleware(transfersMiddleware::class);
+    
     Route::post('/admin/addpost', [adminController::class, 'post'])->middleware(operationsMiddleware::class);
+    Route::post('/admin/addpostTransfers', [adminController::class, 'postTransfers'])->middleware(transfersMiddleware::class);
 
     Route::get('/admin/addusers', [adminController::class, 'addusers'])->middleware(operationsMiddleware::class);
     Route::post('/admin/addusers', [adminController::class, 'adduserspost'])->middleware(operationsMiddleware::class);
@@ -61,7 +64,8 @@ Route::middleware([sessionVerifyAdminMiddleware::class])->group(function () {
     Route::get('/admin/listpostTransfers', [adminController::class, 'listTransfers'])->middleware(transfersMiddleware::class);
     Route::get('/admin/listusers', [adminController::class, 'listusers'])->middleware(operationsMiddleware::class);
 
-    Route::get('/admin/seepost/{id}', [adminController::class, 'see']);
+    Route::get('/admin/seepost/{id}', [adminController::class, 'see'])->middleware(operationsMiddleware::class);
+    Route::get('/admin/seepostTransfers/{id}', [adminController::class, 'seeTransfers'])->middleware(transfersMiddleware::class);
     Route::get('/admin/seeusers/{id}', [adminController::class, 'seeusers'])->middleware(operationsMiddleware::class);
 
     Route::get('/admin/statuspost/{id}/{status}', [adminController::class, 'status']);
@@ -72,7 +76,7 @@ Route::middleware([sessionVerifyAdminMiddleware::class])->group(function () {
     Route::get('/admin/deletepost/{id}', [adminController::class, 'delete']);  
     Route::get('/admin/deleteusers/{id}', [adminController::class, 'deleteusers'])->middleware(operationsMiddleware::class);  
 
-    Route::get('/admin/recoverypassword/{id}', [adminController::class, 'recoverypassword']);  
+    // Route::get('/admin/recoverypassword/{id}', [adminController::class, 'recoverypassword']);  
 
 
 });

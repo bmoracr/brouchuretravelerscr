@@ -5,9 +5,9 @@
     <div class="container">
         <div class="bg-light mt-4 rounded">
             <div class="d-flex justify-content-around align-content-center align-self-center w-100">
-                <div  class="d-flex justify-content-around align-self-center w-100"><h1 class="p-4 fs-2">Tour List</h1></div>
+                <div  class="d-flex justify-content-around align-self-center w-100"><h1 class="p-4 fs-2">Transfers List</h1></div>
                 <div class="d-flex justify-content-around align-self-center w-50"><a href="/admin" ><i class="fas fa-home text-dark fs-4"></i></a></div>
-                <div class="d-flex justify-content-around align-self-center w-50"><a href="/admin/addpost/" ><i class="fas fa-plus-circle text-dark fs-4"></i></a></div>
+                <div class="d-flex justify-content-around align-self-center w-50"><a href="/admin/addpostTransfers/" ><i class="fas fa-plus-circle text-dark fs-4"></i></a></div>
             </div>
             @if (session('status'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -37,13 +37,13 @@
                         
                 <li class="list-group-item list-group-item-action d-flex justify-content-around p-4 align-content-center align-self-center w-100 m-0 {{$bg}}" > 
                     <span class="w-100 d-flex justify-content-start" >{{$item->name}}</span> 
-                    <span class="w-100"><a href="/admin/seepost/{{$item->id}}"><i class="far fa-eye text-dark " style="font-size:1rem;"></i></a></span>
+                    <span class="w-100"><a href="/admin/seepostTransfers/{{$item->id}}"><i class="far fa-eye text-dark " style="font-size:1rem;"></i></a></span>
                     <span class="w-100">
                         <a href="/admin/deletepost/{{$item->id}}"><i class="fas fa-trash text-danger " style="font-size:1rem;"></i></a>
                     </span>
-                    <span class="w-100">
+                    {{-- <span class="w-100">
                         <a href="/admin/isspecialpost/{{$item->id}}/{{$item->is_special}}"><i class="fas fa-history {{$is_special}}" style="font-size:1rem;"></i></a>
-                    </span>
+                    </span> --}}
                     <span class="w-100">
                         <a href="/admin/statuspost/{{$item->id}}/{{$item->status}}"><i class="fas fa-circle {{$status}} " style="font-size:1rem;"></i></a>
                     </span>

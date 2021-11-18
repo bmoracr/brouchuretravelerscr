@@ -23,6 +23,10 @@ class adminController extends Controller
         return view('admin',['section'=>'addpost']);
     }
 
+    public static function getTransfers(){
+        return view('admin',['section'=>'addpostTransfers']);
+    }
+
     public static function list(){
         $post = DB::table('post')->where('code', 'not like', '%TRANSFERS-%')->orderBy('category', 'desc')->get();
         return view('admin',['section'=>'listpost', 'products'=>$post]);
@@ -30,7 +34,7 @@ class adminController extends Controller
 
     public static function listTransfers(){
         $post = DB::table('post')->where('code', 'like', '%TRANSFERS-%')->orderBy('category', 'desc')->get();
-        return view('admin',['section'=>'listpost', 'products'=>$post]);
+        return view('admin',['section'=>'listpostTransfers', 'products'=>$post]);
     }
 
     public static function listusers(){
@@ -107,7 +111,76 @@ class adminController extends Controller
          
         DB::table('post')->insert($data);
 
-        return redirect('/admin/addpost')->with(['successful'=>'Tour Added successfully!']);
+        return back()->with(['successful'=>'Tour Added successfully!']);
+
+
+    }
+
+    public static function postTransfers(Request $request){
+
+        
+        $status = $request->get('status');
+        // $is_special = $request->get('is_special');
+        $not_img = $request->get('not_img');
+
+
+        if($status == null){ $status = 0; }
+        $is_special = 0;
+
+        $checkbox = ['status'=>$status, 'is_special'=>$is_special] ;
+
+
+        $fields = $request->validate([
+            'code' => 'required|string|unique:post',
+            'name' => 'required|string|unique:post',
+            'category' => 'required',
+            'p_rack' => 'required|numeric',
+            'p_neto' => 'required|numeric',
+            'p_comssion' => 'required|numeric',
+            'includes' => 'required|string',
+            'description' => 'required|string',
+
+        ]);
+
+        $fields['code'] = 'TRANSFERS-' . $fields['code'];
+
+        if(!$not_img){
+
+            $imgroute = $_SERVER['DOCUMENT_ROOT']  . '/assets/img/tours/' . $fields['code'] . '.jpg';
+
+            if(!$_FILES['img']['tmp_name']){
+
+                return back()->withErrors(['Must select your image'])->withInput();
+    
+            }else{
+    
+                if(file_exists($imgroute)){
+    
+                    return back()->withErrors(['Image already exist to this tour'])->withInput();
+    
+                }else{
+    
+                    move_uploaded_file($_FILES['img']['tmp_name'], $imgroute);
+                }
+    
+            }
+            
+        }else{
+
+            $imgroute = NULL;
+
+        }
+        
+
+        
+        
+        $data = $fields + $checkbox + ['created_by'=>Auth::user()->username, 'path_src'=>$imgroute];
+
+
+         
+        DB::table('post')->insert($data);
+
+        return back()->with(['successful'=>'Transfer Added successfully!']);
 
 
     }
@@ -122,12 +195,12 @@ class adminController extends Controller
                 unlink($_SERVER['DOCUMENT_ROOT']  . '/assets/img/tours/' . $imagepath->code . '.jpg');
             }
             DB::table('post')->delete($id);
-            return redirect('/admin/listpost')->with('status', 'Tour deleted sucessfully');
+            return back()->with('status', 'Tour deleted sucessfully');
             
 
         }else{
 
-            return redirect('/admin/listpost')->with('status', 'Id not found');
+            return back()->with('status', 'Id not found');
         }
 
     }
@@ -155,14 +228,23 @@ class adminController extends Controller
 
     }
 
+    public static function seeTransfers($id){
+
+        $post = DB::table('post')->where('code', 'like', '%TRANSFERS-%')->where('id', '=', $id)->get();
+
+        return view('admin',['section'=>'seepostTransfers', 'products'=>$post]);
+        
+
+    }
+
     public static function status($id, $status){
 
         if($status){
             DB::table('post')->where('id', '=', $id)->update(['status'=>0]);
-            return redirect('/admin/listpost')->with('status', 'Status disabled');
+            return back()->with('status', 'Status disabled');
         }else{
             DB::table('post')->where('id', '=', $id)->update(['status'=>1]);
-            return redirect('/admin/listpost')->with('status', 'Status enabled');
+            return back()->with('status', 'Status enabled');
         }
         
 
@@ -241,7 +323,7 @@ class adminController extends Controller
         //     'token' => $token
         // ];
 
-        return redirect('/admin/addusers')->with(['successful'=>'Tour Added successfully!']);
+        return back()->with(['successful'=>'Tour Added successfully!']);
 
     }
 

@@ -2,11 +2,20 @@
     @case('addpost')
         @include('template/addpost')
         @break
+    @case('addpostTransfers')
+        @include('template/addpostTransfers')
+        @break
     @case('listpost')
         @include('template/listpost')
         @break
+    @case('listpostTransfers')
+        @include('template/listpostTransfers')
+        @break
     @case('seepost')
         @include('template/seepost')
+        @break
+    @case('seepostTransfers')
+        @include('template/seepostTransfers')
         @break
     @case('admin')
         @include('template/admin')
