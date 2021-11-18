@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Validator;
 class adminController extends Controller
 {
     public static function admin(){
-        return view('admin',['section'=>'admin']);
+        return view('admin',['section'=>'admin', 'role'=>Auth::user()->role, 'username'=>Auth::user()->username]);
     }
 
     public static function get(){
@@ -24,12 +24,21 @@ class adminController extends Controller
     }
 
     public static function list(){
-        $post = DB::table('post')->orderBy('category', 'desc')->get();
+        $post = DB::table('post')->where('code', 'not like', '%TRANSFERS-%')->orderBy('category', 'desc')->get();
+        return view('admin',['section'=>'listpost', 'products'=>$post]);
+    }
+
+    public static function listTransfers(){
+        $post = DB::table('post')->where('code', 'like', '%TRANSFERS-%')->orderBy('category', 'desc')->get();
         return view('admin',['section'=>'listpost', 'products'=>$post]);
     }
 
     public static function listusers(){
-        $post = DB::table('users')->orderBy('name', 'desc')->get();
+        if(Auth::user()->role == 'admin'){
+            $post = DB::table('users')->orderBy('name', 'desc')->get();
+        }else{
+            $post = DB::table('users')->where('role', '=', 'other')->orderBy('name', 'desc')->get();
+        }
         return view('admin',['section'=>'listusers', 'users'=>$post]);
     }
 
@@ -163,10 +172,10 @@ class adminController extends Controller
 
         if($status){
             DB::table('users')->where('id', '=', $id)->update(['status'=>0]);
-            return redirect('/admin/listusers')->with('status', 'Status disabled');
+            return back()->with('status', 'Status disabled');
         }else{
             DB::table('users')->where('id', '=', $id)->update(['status'=>1]);
-            return redirect('/admin/listusers')->with('status', 'Status enabled');
+            return back()->with('status', 'Status enabled');
         }
         
 
@@ -176,10 +185,10 @@ class adminController extends Controller
 
         if($isspecial){
             DB::table('post')->where('id', '=', $id)->update(['is_special'=>0]);
-            return redirect('/admin/listpost')->with('status', 'Seasonal tour disabled');
+            return back()->with('status', 'Seasonal tour disabled');
         }else{
             DB::table('post')->where('id', '=', $id)->update(['is_special'=>1]);
-            return redirect('/admin/listpost')->with('status', 'Seasonal tour enabled');
+            return back()->with('status', 'Seasonal tour enabled');
         }
         
 
@@ -192,7 +201,7 @@ class adminController extends Controller
     }
 
     public static function addusers(){
-        return view('admin',['section'=>'addusers']);
+        return view('admin',['section'=>'addusers', 'role'=>Auth::user()->role]);
 
     }
     

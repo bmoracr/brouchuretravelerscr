@@ -44,12 +44,19 @@
                   
 
                   <div class="input-group mb-3">
-                    <select class="form-select" name="role" aria-label="Select user role">
-                        <option value="Other" selected>Select a role</option>
-                        <option value="admin">Admin</option>
-                        <option value="transfers">Transfer</option>
-                        <option value="other">other</option>
-                      </select>
+                      @if ($role == 'admin')
+                        <select class="form-select" name="role" aria-label="Select user role">
+                            <option value="Other" selected>Select a role</option>
+                            <option value="admin">Admin</option>
+                            <option value="transfers">Transfer</option>
+                            <option value="operations">Operations</option>
+                            <option value="other">Saler</option>
+                        </select>
+                    @else
+                        <select class="form-select" name="role" aria-label="Select user role">
+                            <option value="other" selected>Saler</option>
+                        </select>
+                    @endif
                   </div>
                   
                 <div class="form-check form-check-inline mb-3">

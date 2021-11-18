@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class sessionVerifyAdminMiddleware
+class transfersMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,21 +17,14 @@ class sessionVerifyAdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() &&  Auth::user()->status == 1){
-
-            if(Auth::user()->role == 'admin' || Auth::user()->role == 'transfers'  || Auth::user()->role == 'operations'){
-                    
-                return $next($request);
+        if(Auth::check() && Auth::user()->role == 'transfers' || Auth::check() && Auth::user()->role == 'admin'){
                 
-            }else{
-
-                return redirect('/');
-            }
-
+            return $next($request);
             
         }else{
-            return redirect('/login');
-
+            
+            return redirect('/admin');
+            
         }
     }
 }

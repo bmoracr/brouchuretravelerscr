@@ -83,7 +83,7 @@ footer{width: 100%; position: fixed; bottom: 0; z-index: 3000;}
 
 .title-container{background-color: rgba(0, 0, 0, 0.486); margin-top: 1rem; margin-bottom: 1rem; /*border-radius: 20px 0px 0px 20px;*/}
 .title{font-size: 2rem; margin-left: 2.5rem;  /*border-radius: 20px 0px 0px 20px;*/}
-
+.title-inner{text-decoration: none; color: #f33f3f; font-size: 1rem; align-self: flex-end; text-transform: uppercase;}
 @media (min-width: 800px) {
 
     .search-container>a{width: 7%; font-size: 2rem;}

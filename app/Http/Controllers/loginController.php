@@ -53,7 +53,7 @@ class loginController extends Controller
 
             if( Auth::user()->status == 1){
 
-                if(Auth::user()->role == 'admin'){
+                if(Auth::user()->role == 'admin' || Auth::user()->role == 'transfers'  || Auth::user()->role == 'operations'){
                     return redirect()->intended('/admin');
                     
                 }else{

@@ -5,7 +5,17 @@
     <div class="body-container">
         @include('template/search')
         @include('template/carousel')
-        @include('template/post')
+        @switch($action)
+            @case('post')
+                @include('template/post')
+                @break
+            @case('transfers')
+                @include('template/postTransfers')
+                @break
+            @default
+                
+        @endswitch
+        
     </div>
     
 </div>

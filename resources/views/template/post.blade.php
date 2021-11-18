@@ -1,7 +1,12 @@
 
 <div class="title-container">
     <h1 class="title">
-        @php if($products == null){echo "Not tours found";}else{echo "All tours";} @endphp</h1>
+        @php if($products == null){
+            echo 'Not tours found <a href="transfers" target="_blank" class="title-inner">needs transfer?</a>';}else{
+            echo 'All tours <a href="transfers" target="_blank" class="title-inner">needs transfer?</a>';} 
+        @endphp
+        
+    </h1>
 </div>
 @if ($products != null)
     
@@ -34,8 +39,8 @@
 
     
     
-    
-    <div class="post-container {{$bg}} toHide" data-size="{{$item->name}}">
+    @if (!preg_match('/TRANSFERS-/', $item->code))
+    <div class="post-container {{$bg}} toHide" data-size="{{strtolower($item->name)}}">
 
         <div class="post-card-container">
             <div class="post-header">
@@ -84,7 +89,7 @@
 
 
     </div>
-    
+    @endif
 @endforeach
 
 @endif

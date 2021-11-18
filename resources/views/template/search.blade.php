@@ -12,7 +12,7 @@
 			});
 			function filter(e) {
 			    // var regex = new RegExp('\\b\\w*' + e.toLowerCase() + '\\w*\\b');
-			    var regex = new RegExp('\\b\\w*' + e + '\\w*\\b');
+			    var regex = new RegExp('\\b\\w*' + e.toLowerCase() + '\\w*\\b');
 			    		$('.toHide').hide().filter(function () {
 			        return regex.test($(this).data('size'))
 			    }).show();

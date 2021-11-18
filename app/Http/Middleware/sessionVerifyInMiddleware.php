@@ -19,7 +19,7 @@ class sessionVerifyInMiddleware
     { 
             if(Auth::check() && Auth::user()->status == 1){
 
-                if(Auth::user()->role == 'admin'){
+                if(Auth::user()->role == 'admin' || Auth::user()->role == 'transfers'  || Auth::user()->role == 'operations'){
                     
                     return redirect('/admin');
                     

@@ -5,25 +5,58 @@
     <div class="container">
         <div class="bg-light mt-4 rounded">
 
+            @php
+                if($role == 'admin'){
+                    $title = 'Administrator';
+                }elseif($role == 'operations'){
+                    $title = 'Operations';
+                }else{
+                    $title = 'Tranportation';
+                }
+            @endphp
+
             <div class="d-flex justify-content-around align-content-center">
-                <h1 class="p-4">Admin options</h1>
+                <h1 class="p-4">{{$title}} options</h1>
                 <a href="/" class="align-self-center"><i class="fas fa-globe-americas text-dark fs-4"></i></a>
                 <a href="/logout" class="align-self-center"><i class="fas fa-sign-out-alt text-dark fs-4"></i></i></a>
             </div>
             
             <ul class="list-group text-center w-100 m-0">
 
-                <a href="/admin/listusers/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
-                    <span class="w-100 d-flex justify-content-start text-dark" >Users</span> 
-                </li> </a>
+                @if ($role=='operations')
 
-                <a href="/admin/listpost/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
-                    <span class="w-100 d-flex justify-content-start text-dark" >Operations Tours</span> 
-                </li> </a>
+                    <a href="/admin/listusers/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
+                        <span class="w-100 d-flex justify-content-start text-dark" >Users</span> 
+                    </li> </a>
 
-                <a href="/admin/listpost/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
-                    <span class="w-100 d-flex justify-content-start text-dark" >Transfers</span> 
-                </li></a>
+                    <a href="/admin/listpost/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
+                        <span class="w-100 d-flex justify-content-start text-dark" >Operations Tours</span> 
+                    </li> </a>
+                    
+                @elseif ($role=='transfers')
+                    
+                    <a href="/admin/listpostTransfers/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
+                        <span class="w-100 d-flex justify-content-start text-dark" >Transfers</span> 
+                    </li></a>   
+                    
+                @else
+
+                    <a href="/admin/listusers/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
+                        <span class="w-100 d-flex justify-content-start text-dark" >Users</span> 
+                    </li> </a>
+
+                    <a href="/admin/listpost/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
+                        <span class="w-100 d-flex justify-content-start text-dark" >Operations Tours</span> 
+                    </li> </a>
+                    
+                    <a href="/admin/listpostTransfers/" class="text-decoration-none"><li class="list-group-item list-group-item-action d-flex justify-content-start p-4 align-content-center align-self-center w-100 m-0 " > 
+                        <span class="w-100 d-flex justify-content-start text-dark" >Transfers</span> 
+                    </li></a>   
+                    
+                @endif
+
+                    
+
 
             </ul>
 

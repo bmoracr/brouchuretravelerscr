@@ -3,9 +3,11 @@
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\loginController;
+use App\Http\Middleware\operationsMiddleware;
 use App\Http\Middleware\sessionVerifyInMiddleware;
 use App\Http\Middleware\sessionVerifyMiddleware;
 use App\Http\Middleware\sessionVerifyAdminMiddleware;
+use App\Http\Middleware\transfersMiddleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -40,6 +42,7 @@ Route::middleware([sessionVerifyInMiddleware::class])->group(function () {
 // Normal protected routes
 Route::middleware([sessionVerifyMiddleware::class])->group(function () {
     Route::get('/',  [postController::class, 'get'] );
+    Route::get('/transfers',  [postController::class, 'getTransfers'] );
 });
 
 // Admin protected routes
@@ -47,26 +50,27 @@ Route::middleware([sessionVerifyAdminMiddleware::class])->group(function () {
 
     Route::get('/admin', [adminController::class, 'admin']);
 
-    Route::get('/admin/addpost', [adminController::class, 'get']);
-    Route::post('/admin/addpost', [adminController::class, 'post']);
+    Route::get('/admin/addpost', [adminController::class, 'get'])->middleware(operationsMiddleware::class);
+    Route::post('/admin/addpost', [adminController::class, 'post'])->middleware(operationsMiddleware::class);
 
-    Route::get('/admin/addusers', [adminController::class, 'addusers']);
-    Route::post('/admin/addusers', [adminController::class, 'adduserspost']);
+    Route::get('/admin/addusers', [adminController::class, 'addusers'])->middleware(operationsMiddleware::class);
+    Route::post('/admin/addusers', [adminController::class, 'adduserspost'])->middleware(operationsMiddleware::class);
 
 
-    Route::get('/admin/listpost', [adminController::class, 'list']);
-    Route::get('/admin/listusers', [adminController::class, 'listusers']);
+    Route::get('/admin/listpost', [adminController::class, 'list'])->middleware(operationsMiddleware::class);
+    Route::get('/admin/listpostTransfers', [adminController::class, 'listTransfers'])->middleware(transfersMiddleware::class);
+    Route::get('/admin/listusers', [adminController::class, 'listusers'])->middleware(operationsMiddleware::class);
 
     Route::get('/admin/seepost/{id}', [adminController::class, 'see']);
-    Route::get('/admin/seeusers/{id}', [adminController::class, 'seeusers']);
+    Route::get('/admin/seeusers/{id}', [adminController::class, 'seeusers'])->middleware(operationsMiddleware::class);
 
     Route::get('/admin/statuspost/{id}/{status}', [adminController::class, 'status']);
-    Route::get('/admin/statususers/{id}/{status}', [adminController::class, 'statususers']);
+    Route::get('/admin/statususers/{id}/{status}', [adminController::class, 'statususers'])->middleware(operationsMiddleware::class);
 
-    Route::get('/admin/isspecialpost/{id}/{isspecial}', [adminController::class, 'isspecial']);
+    Route::get('/admin/isspecialpost/{id}/{isspecial}', [adminController::class, 'isspecial'])->middleware(operationsMiddleware::class);
 
     Route::get('/admin/deletepost/{id}', [adminController::class, 'delete']);  
-    Route::get('/admin/deleteusers/{id}', [adminController::class, 'deleteusers']);  
+    Route::get('/admin/deleteusers/{id}', [adminController::class, 'deleteusers'])->middleware(operationsMiddleware::class);  
 
     Route::get('/admin/recoverypassword/{id}', [adminController::class, 'recoverypassword']);  
 
