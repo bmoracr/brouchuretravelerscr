@@ -6,7 +6,7 @@
                 <form action="/login" method="post" >
                     @csrf
                     <div class="login-form-title">
-                        <h1 class="login-title">BROCHURE <em>DIGITAL</em></h1>
+                        <h1 class="login-title">BROUCHURE <em>DIGITAL</em></h1>
                     </div>
                     <div class="login-form-inputs">
                         <div class="login-form-inputs-item"><input placeholder="Username" type="text" name="username" autocomplete="username" value="{{ old('username') }}" required></div>
