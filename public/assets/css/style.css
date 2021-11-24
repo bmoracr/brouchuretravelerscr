@@ -19,7 +19,7 @@ body{background-color: black;}
 .users-card-container{width: 100%;}
 
 .post-image-container{display: none;}
-.post-image-container>img{height: auto; width: 100%; max-height: 25rem; border-radius: 5px; margin-left: 1%;}
+.post-image-container>img{height: auto; width: 100%; max-height: 31rem; border-radius: 5px; margin-left: 1%;}
 
 .bg-volcanes{background-color: #fff4f4 !important;}
 .bg-playa{background-color: #ffffe9 !important;}

@@ -98,7 +98,18 @@ class adminController extends Controller
             
         }else{
 
-            $imgroute = NULL;
+            $imgroute = $_SERVER['DOCUMENT_ROOT']  . '/assets/img/tours/' . $fields['code'] . '.jpg';
+
+            if(file_exists($imgroute)){
+    
+                $imgroute = $_SERVER['DOCUMENT_ROOT']  . '/assets/img/tours/' . $fields['code'] . '.jpg';
+
+            }else{
+
+                $imgroute = NULL;
+            }
+
+            
 
         }
         
