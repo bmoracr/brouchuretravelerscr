@@ -31,18 +31,28 @@
 <script>
     $(document).ready(function(){
         $('.owl-carousel').owlCarousel({
-        items:2,
-        animateOut: 'slideOutDown',
-        animateIn: 'flipInX',
+        // animateOut: 'fadeOut', 
+        // animateIn: 'flipInX',
+        // autoWidth:true,
+        pullDrag:true,
         loop:true,
-        nav:false,
-        dots:false,
+        items:1,
+        stagePadding:0,
+        margin:30,
         center:true,
-        margin:10,
-        URLhashListener:true,
-        responsiveClass:true,
+        autoplay:true,
+        autoplayTimeout:3000,
         autoplayHoverPause:true,
-        startPosition: 'URLHash'
+        dots:false,
+        smartSpeed:450
+        // animateOut: 'fadeOut', 
+        // animateIn: 'flipInX',
+        // nav:false,
+        // margin:10,
+        // URLhashListener:true,
+        // responsiveClass:true,
+        // autoplayHoverPause:true,
+        // startPosition: 'URLHash'
     });
 });
 </script>
