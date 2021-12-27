@@ -16,7 +16,7 @@
             @endphp
 
             <div class="d-flex justify-content-around align-content-center">
-                <h1 class="p-4">{{$title}} options</h1>
+                <h1 class="title-admin">{{$title}} options</h1>
                 <a href="/" class="align-self-center"><i class="fas fa-globe-americas text-dark fs-4"></i></a>
                 <a href="/logout" class="align-self-center"><i class="fas fa-sign-out-alt text-dark fs-4"></i></i></a>
             </div>

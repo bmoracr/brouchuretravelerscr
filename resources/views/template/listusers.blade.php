@@ -30,7 +30,7 @@
                         // if($item->is_special==1){$is_special='text-primary';}else{$is_special='text-secondary';}
                 @endphp
                 <li class="list-group-item list-group-item-action d-flex justify-content-around p-4 align-content-center align-self-center w-100 m-0 {{$bg}}" > 
-                    <span class="w-100 d-flex justify-content-start text-truncate" >{{$item->name}}</span> 
+                    {{-- <span class="w-100 d-flex justify-content-start text-truncate" >{{$item->name}}</span>  --}}
                     <span class="w-100 d-flex justify-content-start " >{{'@'.$item->username}}</span> 
                     {{-- <span class="w-100 d-flex justify-content-start text-truncate" >{{$item->email}}</span>   --}}
                     <span class="w-100"><a href="/admin/seeusers/{{$item->id}}"><i class="fas fa-eye text-dark " style="font-size:1rem;"></i></a></span>

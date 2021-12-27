@@ -18,8 +18,8 @@
                 </div>
             </div>
     
-            <div class="post-body">
-                <table class="post-body-table">
+            <div class="post-body-see">
+                <table class="post-body-table-see">
                     <thead>
                         <tr>
                             <th>Name</th>
