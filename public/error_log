@@ -1,0 +1,33 @@
+[16-Nov-2021 10:46:34 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.2.34. in /home/traveler/nuevobro/vendor/composer/platform_check.php on line 24
+[16-Nov-2021 10:47:22 UTC] PHP Warning:  require(/home/traveler/nuevobro/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/traveler/nuevobro/vendor/composer/autoload_real.php on line 71
+[16-Nov-2021 10:47:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/traveler/nuevobro/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/traveler/nuevobro/vendor/composer/autoload_real.php:71
+Stack trace:
+#0 /home/traveler/nuevobro/vendor/composer/autoload_real.php(61): composerRequiredb1b5a9ab70d6b2f4afcc6772e64d16b('ec07570ca5a8121...', '/home/traveler/...')
+#1 /home/traveler/nuevobro/vendor/autoload.php(7): ComposerAutoloaderInitdb1b5a9ab70d6b2f4afcc6772e64d16b::getLoader()
+#2 /home/traveler/nuevobro/public/index.php(34): require('/home/traveler/...')
+#3 {main}
+  thrown in /home/traveler/nuevobro/vendor/composer/autoload_real.php on line 71
+[16-Nov-2021 10:47:29 UTC] PHP Warning:  require(/home/traveler/nuevobro/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/traveler/nuevobro/vendor/composer/autoload_real.php on line 71
+[16-Nov-2021 10:47:29 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/traveler/nuevobro/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/traveler/nuevobro/vendor/composer/autoload_real.php:71
+Stack trace:
+#0 /home/traveler/nuevobro/vendor/composer/autoload_real.php(61): composerRequiredb1b5a9ab70d6b2f4afcc6772e64d16b('ec07570ca5a8121...', '/home/traveler/...')
+#1 /home/traveler/nuevobro/vendor/autoload.php(7): ComposerAutoloaderInitdb1b5a9ab70d6b2f4afcc6772e64d16b::getLoader()
+#2 /home/traveler/nuevobro/public/index.php(34): require('/home/traveler/...')
+#3 {main}
+  thrown in /home/traveler/nuevobro/vendor/composer/autoload_real.php on line 71
+[16-Nov-2021 10:47:36 UTC] PHP Warning:  require(/home/traveler/nuevobro/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/traveler/nuevobro/vendor/composer/autoload_real.php on line 71
+[16-Nov-2021 10:47:36 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/traveler/nuevobro/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/traveler/nuevobro/vendor/composer/autoload_real.php:71
+Stack trace:
+#0 /home/traveler/nuevobro/vendor/composer/autoload_real.php(61): composerRequiredb1b5a9ab70d6b2f4afcc6772e64d16b('ec07570ca5a8121...', '/home/traveler/...')
+#1 /home/traveler/nuevobro/vendor/autoload.php(7): ComposerAutoloaderInitdb1b5a9ab70d6b2f4afcc6772e64d16b::getLoader()
+#2 /home/traveler/nuevobro/public/index.php(34): require('/home/traveler/...')
+#3 {main}
+  thrown in /home/traveler/nuevobro/vendor/composer/autoload_real.php on line 71
+[16-Nov-2021 10:55:18 UTC] PHP Warning:  require(/home/traveler/nuevobro/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/traveler/nuevobro/vendor/composer/autoload_real.php on line 71
+[16-Nov-2021 10:55:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/traveler/nuevobro/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home/traveler/nuevobro/vendor/composer/autoload_real.php:71
+Stack trace:
+#0 /home/traveler/nuevobro/vendor/composer/autoload_real.php(61): composerRequiredb1b5a9ab70d6b2f4afcc6772e64d16b('ec07570ca5a8121...', '/home/traveler/...')
+#1 /home/traveler/nuevobro/vendor/autoload.php(7): ComposerAutoloaderInitdb1b5a9ab70d6b2f4afcc6772e64d16b::getLoader()
+#2 /home/traveler/nuevobro/public/index.php(34): require('/home/traveler/...')
+#3 {main}
+  thrown in /home/traveler/nuevobro/vendor/composer/autoload_real.php on line 71
