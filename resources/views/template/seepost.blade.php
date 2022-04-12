@@ -46,16 +46,16 @@
                 <table class="post-body-table">
                     <thead>
                         <tr>
-                            <th>P.RACK</th>
-                            <th>P.NETO</th>
-                            <th>P.COMISSION</th>
+                            {{-- <th>P.RACK</th> --}}
+                            <th colspan="6">COSTUMER COST PRICE</th>
+                            {{-- <th>P.COMISSION</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{$item->p_rack}}$</td>
+                            {{-- <td>{{$item->p_rack}}$</td> --}}
                             <td>{{$item->p_neto}}$</td>
-                            <td>{{$item->p_comssion}}$</td>
+                            {{-- <td>{{$item->p_comssion}}$</td> --}}
                         </tr>
                     </tbody>
                 </table>
